@@ -3,12 +3,12 @@
 
 현대적인 웹 기술 스택인 Next.js와 Supabase를 활용하여 구축된 개인 블로그 및 게시물 공유 플랫폼입니다. 깔끔한 UI와 직관적인 텍스트 에디터, 태그 기반 필터링 기능을 제공합니다.
 
-🔗 [Live Demo 보러가기](https://dev-blog-kcpak4175-specs-projects.vercel.app)
+🔗 [Live Demo 보러가기](https://dev-blog-drab-nine.vercel.app)
 
 ---
 
 ## 🚀 기술 스택 (Tech Stack)
-- **Framework**: Next.js 14 (App Router, Server/Client Components)
+- **Framework**: Next.js 16 (App Router, Server/Client Components)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Backend / Database**: Supabase (PostgreSQL, Auth, RLS Policies)
@@ -27,13 +27,13 @@
 
 ### 블로그 읽기 경험 최적화
 - 현대적이고 깔끔한 화이트 톤의 UI 설계
-- 카테고리 태그 필터링 및 제목 검색 기능 지원
-- 서버 사이드 렌더링(SSR)을 통한 빠른 초기 로딩 속도
+- 카테고리 태그 가로 스크롤 필터링 및 제목 검색 기능 지원
+- 서버 사이드 렌더링(SSR) 및 Turbopack을 통한 빠른 개발 및 실행 환경
 
 ### 게시글 관리 및 공유 기능
-- 게시글 작성, 수정, 삭제 및 댓글 작성 기능
+- 게시글 작성, 수정, 삭제 및 댓글(RLS 적용) 기능
 - 빠르고 쉬운 'URL 클립보드 복사(공유)' 기능 제공
-- 커버 이미지 URL 지정을 통한 맞춤형 썸네일 설정 (미지정 시 자동 랜덤 이미지 적용)
+- **제목 기반 고유 커버 이미지 자동 생성 시스템** 도입 (맞춤형 자동 썸네일)
 
 ---
 
@@ -87,4 +87,4 @@ npx supabase db push
 3. 배포(Deploy) 버튼을 누릅니다.
 
 > [!IMPORTANT]
-> **(중요)** 정상적인 로그인을 위해, 배포 후 발급받은 도메인 주소(예: `https://dev-blog-kcpak4175-specs-projects.vercel.app/`)를 Supabase Dashboard의 **Authentication > URL Configuration**에 리다이렉트 URL로 반드시 등록해야 합니다.
+> **(중요)** 정상적인 로그인을 위해, 배포 후 발급받은 도메인 주소(예: `https://dev-blog-drab-nine.vercel.app/`)를 Supabase Dashboard의 **Authentication > URL Configuration**에 리다이렉트 URL로 반드시 등록해야 합니다.
