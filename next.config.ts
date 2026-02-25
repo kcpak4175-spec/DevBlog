@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "i.pinimg.com", // Pinterest images
+      },
+      {
+        protocol: "https",
         hostname: "*.supabase.co", // Allow Supabase storage URLs
       },
       {
