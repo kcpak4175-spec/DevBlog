@@ -10,8 +10,6 @@ export default function WritePage() {
     const router = useRouter();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [coverImageUrl, setCoverImageUrl] = useState("");
-    const [coverImageFile, setCoverImageFile] = useState<File | null>(null);
     const [tags, setTags] = useState<string[]>([]);
     const [isSaving, setIsSaving] = useState(false);
     const [isPublishing, setIsPublishing] = useState(false);
@@ -29,42 +27,9 @@ export default function WritePage() {
         }
 
         try {
-            let finalCoverImage = coverImageUrl;
-
-            // 1. 파일이 있으면 Supabase Storage에 업로드 (클라이언트 사이드에서 바로 처리하거나, Presigned URL 사용 가능. 여기서는 클라이언트 래퍼 사용)
-            if (coverImageFile) {
-                // To safely upload from client, we use the browser client
-                const { createClient } = await import('@/lib/supabase/client');
-                const supabaseClient = createClient();
-
-                const fileExt = coverImageFile.name.split('.').pop();
-                const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-                const filePath = `${fileName}`;
-
-                const { error: uploadError, data: uploadData } = await supabaseClient.storage
-                    .from('post_images')
-                    .upload(filePath, coverImageFile);
-
-                if (uploadError) {
-                    console.error("Image upload error:", uploadError);
-                    alert("이미지 업로드에 실패했습니다. 버킷 권한을 확인해주세요.");
-                    setIsSaving(false);
-                    setIsPublishing(false);
-                    return;
-                }
-
-                // Get public URL
-                const { data: { publicUrl } } = supabaseClient.storage
-                    .from('post_images')
-                    .getPublicUrl(filePath);
-
-                finalCoverImage = publicUrl;
-            }
-            // 2. 파일도 없고 URL도 없으면 기존처럼 랜덤 이미지 생성
-            else if (finalCoverImage.trim() === "") {
-                const seedString = title.trim() ? encodeURIComponent(title.trim()) : "random-seed-" + Date.now();
-                finalCoverImage = `https://picsum.photos/seed/${seedString}/800/400`;
-            }
+            // 항상 타이틀 기반 랜덤 시드로 이미지 생성
+            const seedString = title.trim() ? encodeURIComponent(title.trim()) : "random-seed-" + Date.now();
+            const finalCoverImage = `https://picsum.photos/seed/${seedString}/800/400`;
 
             const result = await createPost({
                 title,
@@ -108,10 +73,6 @@ export default function WritePage() {
                 onPublish={() => handleSave(true)}
                 isSaving={isSaving}
                 isPublishing={isPublishing}
-                coverImageUrl={coverImageUrl}
-                onCoverImageUrlChange={setCoverImageUrl}
-                coverImageFile={coverImageFile}
-                onCoverImageFileChange={setCoverImageFile}
                 tags={tags}
                 onTagsChange={setTags}
             />

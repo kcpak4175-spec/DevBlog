@@ -10,10 +10,6 @@ interface WritingHeaderProps {
     onPublish: () => void;
     isSaving: boolean;
     isPublishing: boolean;
-    coverImageUrl: string;
-    onCoverImageUrlChange: (url: string) => void;
-    coverImageFile: File | null;
-    onCoverImageFileChange: (file: File | null) => void;
     tags: string[];
     onTagsChange: (tags: string[]) => void;
 }
@@ -25,10 +21,6 @@ export default function WritingHeader({
     onPublish,
     isSaving,
     isPublishing,
-    coverImageUrl,
-    onCoverImageUrlChange,
-    coverImageFile,
-    onCoverImageFileChange,
     tags,
     onTagsChange,
 }: WritingHeaderProps) {
@@ -72,30 +64,6 @@ export default function WritingHeader({
                             onChange={(e) => onTitleChange(e.target.value)}
                             autoFocus
                         />
-                    </div>
-                    <div className="h-6 w-[1px] bg-gray-200 hidden md:block" />
-                    <div className="flex flex-col flex-1 h-full justify-center hidden md:flex min-w-[200px]">
-                        <label className="text-[10px] font-bold text-blue-500 uppercase tracking-tight mb-0.5">
-                            커버 이미지 (파일 또는 URL)
-                        </label>
-                        <div className="flex items-center gap-2">
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => onCoverImageFileChange(e.target.files?.[0] || null)}
-                                className="block w-[140px] text-[10px] text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-                            />
-                            <span className="text-xs text-gray-300">|</span>
-                            <input
-                                id="post-cover"
-                                type="url"
-                                placeholder={coverImageFile ? "파일 선택됨" : "URL 입력 (선택)"}
-                                disabled={!!coverImageFile}
-                                className="bg-transparent text-xs font-medium text-gray-900 placeholder-gray-300 focus:outline-none w-full disabled:opacity-50"
-                                value={coverImageUrl}
-                                onChange={(e) => onCoverImageUrlChange(e.target.value)}
-                            />
-                        </div>
                     </div>
                 </div>
 
