@@ -10,7 +10,6 @@ export default function EditPageClient({ post }: { post: any }) {
     const router = useRouter();
     const [title, setTitle] = useState(post.title || "");
     const [content, setContent] = useState(post.content || "");
-    const [coverImageUrl, setCoverImageUrl] = useState(post.cover_image_url || "");
     const [tags, setTags] = useState<string[]>(post.tags || []);
     const [isSaving, setIsSaving] = useState(false);
     const [isPublishing, setIsPublishing] = useState(false);
@@ -28,9 +27,9 @@ export default function EditPageClient({ post }: { post: any }) {
         }
 
         try {
-            const finalCoverImage = coverImageUrl.trim() !== ""
-                ? coverImageUrl
-                : `https://picsum.photos/seed/${encodeURIComponent(title)}/800/400`;
+            // 항상 타이틀 기반 랜덤 시드로 이미지 생성
+            const seedString = title.trim() ? encodeURIComponent(title.trim()) : "random-seed-" + Date.now();
+            const finalCoverImage = `https://picsum.photos/seed/${seedString}/800/400`;
 
             const result = await updatePost({
                 id: post.id,
@@ -71,8 +70,6 @@ export default function EditPageClient({ post }: { post: any }) {
                 onPublish={() => handleSave(true)}
                 isSaving={isSaving}
                 isPublishing={isPublishing}
-                coverImageUrl={coverImageUrl}
-                onCoverImageUrlChange={setCoverImageUrl}
                 tags={tags}
                 onTagsChange={setTags}
             />
