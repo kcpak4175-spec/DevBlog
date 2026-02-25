@@ -87,4 +87,4 @@ npx supabase db push
 3. 배포(Deploy) 버튼을 누릅니다.
 
 > [!IMPORTANT]
-> **(중요)** 발급받은 배포 후 도메인(예: `https://dev-blog-kcpak4175-specs-projects.vercel.app/`)을 Supabase Dashboard의 **Authentication > URL Configuration** 에 추가하여 로그인 리다이렉트를 허용해주어야 정상적인 인증이 가능합니다.
+> **(중요)** 정상적인 로그인을 위해, 배포 후 발급받은 도메인 주소(예: `https://dev-blog-kcpak4175-specs-projects.vercel.app/`)를 Supabase Dashboard의 **Authentication > URL Configuration**에 리다이렉트 URL로 반드시 등록해야 합니다.
