@@ -7,17 +7,10 @@ interface CategoryFilterProps {
 
 export default function CategoryFilter({ categories, currentCategory }: CategoryFilterProps) {
     return (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">게시글 태그</h2>
+        <div className="flex flex-col sm:flex-row sm:items-center w-full gap-4 mb-8">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 shrink-0">태그</h2>
 
-            {/* Design mock has View all text, we can link to something or just render it */}
-            <Link href="/" className="text-base font-semibold text-blue-600 hover:text-blue-500 sm:order-last whitespace-nowrap">
-                전체보기
-            </Link>
-
-            <div className="flex flex-nowrap gap-2 sm:mr-auto sm:ml-6 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
-
-
+            <div className="flex flex-nowrap gap-2 flex-1 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide px-2">
                 {categories.map((category) => (
                     <Link
                         key={category.id}
@@ -31,6 +24,10 @@ export default function CategoryFilter({ categories, currentCategory }: Category
                     </Link>
                 ))}
             </div>
+
+            <Link href="/" className="text-base font-semibold text-blue-600 hover:text-blue-500 shrink-0 whitespace-nowrap">
+                전체보기
+            </Link>
         </div>
     );
 }
