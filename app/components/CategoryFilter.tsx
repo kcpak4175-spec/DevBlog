@@ -15,7 +15,7 @@ export default function CategoryFilter({ categories, currentCategory }: Category
                 전체보기
             </Link>
 
-            <div className="flex flex-wrap gap-2 sm:mr-auto sm:ml-6 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
+            <div className="flex flex-nowrap gap-2 sm:mr-auto sm:ml-6 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
 
 
                 {categories.map((category) => (
