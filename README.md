@@ -1,7 +1,7 @@
 # DevBlog (개발자를 위한 기술 블로그)
 **write. kcpak**
 
-현대적인 웹 기술 스택인 Next.js와 Supabase를 활용하여 구축된 개인 블로그 및 게시물 공유 플랫폼입니다. 깔끔한 UI와 풍부한 텍스트 에디터, 다크 모드, 북마크 기능을 제공합니다.
+현대적인 웹 기술 스택인 Next.js와 Supabase를 활용하여 구축된 개인 블로그 및 게시물 공유 플랫폼입니다. 깔끔한 UI와 직관적인 텍스트 에디터, 태그 기반 필터링 기능을 제공합니다.
 
 🔗 [Live Demo 보러가기](https://dev-blog-kcpak4175-specs-projects.vercel.app)
 
@@ -13,7 +13,7 @@
 - **Styling**: Tailwind CSS
 - **Backend / Database**: Supabase (PostgreSQL, Auth, RLS Policies)
 - **Deployment**: Vercel
-- **Markdown Processor**: Custom React Markdown Parser
+- **Markdown Processor**: React Markdown
 
 ---
 
@@ -22,18 +22,18 @@
 - Supabase Auth를 활용한 안전한 이메일 회원가입 및 로그인 시스템
 
 ### 풀스택 마크다운 에디터 (Markdown Editor)
-- 코딩 블록구문 강조(Syntax Highlighting) 및 실시간 미리보기가 지원되는 에디터
-- 글 발행 상태 관리: 임시저장(Draft) / 공개(Published) 기능
+- 실시간 미리보기가 지원되는 직관적인 마크다운 에디터
+- 글 발행 상태 관리: 임시저장(Draft) / 공개(Published) 기능 지원
 
 ### 블로그 읽기 경험 최적화
-- 다크 모드 기반의 깔끔하고 현대적인 UI 설계
-- 각 페이지별 읽기 소요 시간(Read Time) 자동 표시 기능
-- 카테고리 필터링 및 제목 검색 기반 페이지네이션 지원
+- 현대적이고 깔끔한 화이트 톤의 UI 설계
+- 카테고리 태그 필터링 및 제목 검색 기능 지원
+- 서버 사이드 렌더링(SSR)을 통한 빠른 초기 로딩 속도
 
-### 마이 페이지 & 공유 기능
-- 게시물 상세 페이지에서 직접 '북마크 토글' 기능 제공
+### 게시글 관리 및 공유 기능
+- 게시글 작성, 수정, 삭제 및 댓글 작성 기능
 - 빠르고 쉬운 'URL 클립보드 복사(공유)' 기능 제공
-- 동적 썸네일 자동 생성 및 연결 기능
+- 커버 이미지 URL 지정을 통한 맞춤형 썸네일 설정 (미지정 시 자동 랜덤 이미지 적용)
 
 ---
 
